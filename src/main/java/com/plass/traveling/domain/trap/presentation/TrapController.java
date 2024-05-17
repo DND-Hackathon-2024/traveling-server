@@ -23,6 +23,13 @@ public class TrapController {
         return trapService.trapCreate(createTrapRequest);
     }
 
+    @GetMapping("/{id}")
+    public BaseResponse getTrap(
+            @PathVariable Long id
+    ) {
+        return trapService.getTrap(id);
+    }
+
     @DeleteMapping("/{id}")
     public BaseResponse deleteTrap(@PathVariable Long id){
         return trapService.trapDelete(id);

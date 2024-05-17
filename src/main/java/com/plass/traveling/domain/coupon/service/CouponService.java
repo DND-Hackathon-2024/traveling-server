@@ -37,6 +37,7 @@ public interface CouponService {
                 .location(couponEntity.getCouponLocation())
                 .couponDiscount(couponEntity.getCouponDiscount())
                 .couponCreateUserName(couponEntity.getCouponCreateUserName())
+                .trapId(couponEntity.getTrapId())
                 .build();
     }
 }

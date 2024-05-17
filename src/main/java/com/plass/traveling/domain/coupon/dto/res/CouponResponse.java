@@ -10,6 +10,7 @@ public record CouponResponse(
         String description,
         String location,
         String couponDiscount,
-        String couponCreateUserName
+        String couponCreateUserName,
+        Long trapId
 ) {
 }
