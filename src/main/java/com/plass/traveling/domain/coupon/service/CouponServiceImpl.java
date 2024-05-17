@@ -1,6 +1,7 @@
 package com.plass.traveling.domain.coupon.service;
 
 import com.plass.traveling.domain.coupon.dto.req.CouponRequest;
+import com.plass.traveling.domain.coupon.dto.res.CouponResponse;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import com.plass.traveling.domain.coupon.repository.CouponRepository;
 import com.plass.traveling.domain.member.entity.MemberEntity;
@@ -78,11 +79,24 @@ public class CouponServiceImpl implements CouponService{
         CouponEntity couponEntity = couponRepository.findById(couponId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         MemberEntity member = memberRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
         member.addCoupon(couponEntity);
+        couponEntity.addMember(member);
         memberRepository.save(member);
 
         return new BaseResponse(
                 HttpStatus.OK,
                 "쿠폰추가성공"
+        );
+    }
+
+    @Override
+    public BaseResponse getAllCoupon(Long userId) {
+        List<CouponResponse> couponResponses = memberRepository.findById(userId)
+                .map(member -> member.getCoupons().stream().map(this::couponEntityToResponse).toList())
+                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+        return new BaseResponse(
+                HttpStatus.OK,
+                "모든쿠폰불러오기성공",
+                couponResponses
         );
     }
 
