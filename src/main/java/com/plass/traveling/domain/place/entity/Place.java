@@ -35,9 +35,30 @@ public class Place {
     private String address;
 
     /*
-        카운트
+        쿠폰 id
     */
     @Column(nullable = false)
-    private String count;
+    private Long couponId;
+
+    /*
+        장소 이미지
+    */
+    @Column(nullable = false)
+    private String imgUrl;
+
+    @Builder
+    public Place(Long id,
+                 String placeName,
+                 String placeDesc,
+                 String address,
+                 Long couponId,
+                 String imgUrl) {
+        this.id = id;
+        this.placeName = placeName;
+        this.placeDesc = placeDesc;
+        this.address = address;
+        this.couponId = couponId;
+        this.imgUrl = imgUrl;
+    }
 }
 
