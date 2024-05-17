@@ -90,13 +90,12 @@ public class CouponServiceImpl implements CouponService{
 
     @Override
     public BaseResponse getAllCoupon(Long userId) {
-        List<CouponResponse> couponResponses = memberRepository.findById(userId)
-                .map(member -> member.getCoupons().stream().map(this::couponEntityToResponse).toList())
-                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+        ;
         return new BaseResponse(
                 HttpStatus.OK,
                 "모든쿠폰불러오기성공",
-                couponResponses
+                memberRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND)).getCoupons().stream().map(this::couponEntityToResponse).toList()
+
         );
     }
 
