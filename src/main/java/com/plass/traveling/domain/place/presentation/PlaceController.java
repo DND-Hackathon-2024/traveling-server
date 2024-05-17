@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/device")
+@RequestMapping("/place")
 @RequiredArgsConstructor
 public class PlaceController {
     private final PlaceService placeService;
