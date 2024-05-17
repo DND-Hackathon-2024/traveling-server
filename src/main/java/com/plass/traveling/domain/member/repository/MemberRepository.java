@@ -1,5 +1,6 @@
-package com.plass.traveling.domain.member;
+package com.plass.traveling.domain.member.repository;
 
+import com.plass.traveling.domain.member.entity.MemberEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

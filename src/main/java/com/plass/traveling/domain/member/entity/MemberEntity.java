@@ -1,5 +1,6 @@
-package com.plass.traveling.domain.member;
+package com.plass.traveling.domain.member.entity;
 
+import com.plass.traveling.domain.member.enums.MemberRoles;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

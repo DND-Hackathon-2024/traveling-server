@@ -1,6 +1,6 @@
 package com.plass.traveling.global.auth;
 
-import com.plass.traveling.domain.member.MemberEntity;
+import com.plass.traveling.domain.member.entity.MemberEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,6 +1,6 @@
 package com.plass.traveling.global.auth;
 
-import com.plass.traveling.domain.member.MemberRepository;
+import com.plass.traveling.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
