@@ -1,12 +1,13 @@
 package com.plass.traveling.domain.member;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
 
 @Getter
+@Entity
+@NoArgsConstructor
 public class MemberEntity {
 
     @Id
@@ -17,13 +18,18 @@ public class MemberEntity {
 
     private String password; // 비밀번호
 
+    @Enumerated(EnumType.STRING)
+    private MemberRoles role;
+
     @Builder
     public MemberEntity (
             String phone,
-            String password
+            String password,
+            MemberRoles role
     ) {
         this.phone = phone;
         this.password = password;
+        this.role = role;
     }
 
 }
