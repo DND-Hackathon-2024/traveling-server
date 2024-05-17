@@ -12,8 +12,6 @@ public class CustomExceptionHandler {
         return new BaseResponse(
             e.getErrorCode().getHttpStatus(), e.getErrorCode().getMessage()
         );
-
-
     }
 
 }

@@ -14,6 +14,10 @@ public class JwtUserDetails implements UserDetails {
 
     private final MemberEntity member;
 
+    public Long getIdx() {
+        return member.getIdx();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();
