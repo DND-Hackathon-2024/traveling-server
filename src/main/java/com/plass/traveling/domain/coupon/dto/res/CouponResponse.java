@@ -7,6 +7,8 @@ public record CouponResponse(
         Long couponId,
         String code,
         String couponName,
+        String description,
+        String location,
         String couponDiscount,
         String couponCreateUserName
 ) {
