@@ -37,4 +37,12 @@ public class CouponController {
         return couponService.getCouponByLocation(location, userId);
     }
 
+    @PostMapping("/{couponId}")
+    public BaseResponse addCoupon(
+            @GetAuthenticatedId Long userId,
+            @PathVariable Long couponId
+    ) {
+        return couponService.addCoupon(userId, couponId);
+    }
+
 }

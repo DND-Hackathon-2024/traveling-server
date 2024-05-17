@@ -39,4 +39,8 @@ public class MemberEntity {
         this.role = role;
     }
 
+    public void addCoupon(CouponEntity couponEntity){
+        coupons.add(couponEntity);
+    }
+
 }

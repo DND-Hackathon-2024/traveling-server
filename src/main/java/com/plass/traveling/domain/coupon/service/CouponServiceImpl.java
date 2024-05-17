@@ -73,5 +73,18 @@ public class CouponServiceImpl implements CouponService{
         );
     }
 
+    @Override
+    public BaseResponse addCoupon(Long userId, Long couponId) {
+        CouponEntity couponEntity = couponRepository.findById(couponId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+        MemberEntity member = memberRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+        member.addCoupon(couponEntity);
+        memberRepository.save(member);
+
+        return new BaseResponse(
+                HttpStatus.OK,
+                "쿠폰추가성공"
+        );
+    }
+
 
 }
