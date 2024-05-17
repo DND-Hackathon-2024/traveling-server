@@ -1,6 +1,6 @@
 package com.plass.traveling.global.auth;
 
-import com.plass.traveling.domain.member.MemberEntity;
+import com.plass.traveling.domain.member.entity.MemberEntity;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

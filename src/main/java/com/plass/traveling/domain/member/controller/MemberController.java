@@ -1,6 +1,8 @@
-package com.plass.traveling.domain.member;
+package com.plass.traveling.domain.member.controller;
 
-import lombok.AllArgsConstructor;
+import com.plass.traveling.domain.member.dto.req.MemberLoginRequest;
+import com.plass.traveling.domain.member.dto.req.MemberRegisterRequest;
+import com.plass.traveling.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class MemberController {
 
-    private final  MemberService service;
+    private final MemberService service;
 
     @PostMapping("/login")
     public String login(@RequestBody MemberLoginRequest dto) {

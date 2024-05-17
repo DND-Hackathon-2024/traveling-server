@@ -1,4 +1,4 @@
-package com.plass.traveling.domain.member;
+package com.plass.traveling.domain.member.dto.req;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.plass.traveling.domain.member;
+package com.plass.traveling.domain.member.enums;
 
 public enum MemberRoles {
 
