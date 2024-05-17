@@ -24,7 +24,7 @@ public class PlaceController {
     }
 
     @DeleteMapping("/{id}")
-    public BaseResponse deleteVideo(@RequestBody Long id){
+    public BaseResponse deleteVideo(@PathVariable Long id){
         return placeService.placeDelete(id);
     }
 
