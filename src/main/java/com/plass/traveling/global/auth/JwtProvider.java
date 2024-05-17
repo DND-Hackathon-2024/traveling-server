@@ -1,6 +1,7 @@
 package com.plass.traveling.global.auth;
 
 import com.plass.traveling.domain.member.entity.MemberEntity;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,15 @@ public class JwtProvider {
         this.secretKey = new SecretKeySpec(
                 secretKey.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm()
         );
+    }
+
+    public Boolean isExpired(String token) {
+        try {
+            Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token);
+            return false;
+        } catch (ExpiredJwtException e) {
+            return true;
+        }
     }
 
     public String getIdx(String token) {

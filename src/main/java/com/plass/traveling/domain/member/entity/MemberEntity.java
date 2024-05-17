@@ -1,10 +1,13 @@
 package com.plass.traveling.domain.member.entity;
 
+import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import com.plass.traveling.domain.member.enums.MemberRoles;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Getter
 @Entity
@@ -21,6 +24,9 @@ public class MemberEntity {
 
     @Enumerated(EnumType.STRING)
     private MemberRoles role;
+
+    @OneToMany(mappedBy = "member")
+    private List<CouponEntity> coupons;
 
     @Builder
     public MemberEntity (
