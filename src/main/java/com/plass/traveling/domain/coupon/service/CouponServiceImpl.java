@@ -58,10 +58,9 @@ public class CouponServiceImpl implements CouponService{
     public BaseResponse getCouponByLocation(String location, Long userId) {
 
         MemberEntity member = memberRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
-
         List<CouponEntity> couponEntities = member.getCoupons()
                 .stream()
-                .filter(coupon -> coupon.getCouponLocation().equals(location))
+                .filter(coupon -> coupon.getCouponLocation().contains(location))
                 .toList();
 
 
@@ -70,7 +69,7 @@ public class CouponServiceImpl implements CouponService{
                 "지역위치 기반으로 쿠폰조회 성공",
                 couponEntities.stream().map(
                         this::couponEntityToResponse
-                )
+                ).toList()
         );
     }
 

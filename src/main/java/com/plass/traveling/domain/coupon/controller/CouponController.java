@@ -29,7 +29,7 @@ public class CouponController {
         return couponService.getCouponInfo(couponId);
     }
 
-    @GetMapping("/{location}")
+    @GetMapping("/location/{location}")
     public BaseResponse getCouponByLocation(
             @PathVariable String location,
             @GetAuthenticatedId Long userId
