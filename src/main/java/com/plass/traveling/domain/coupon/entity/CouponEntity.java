@@ -40,4 +40,8 @@ public class CouponEntity {
         this.couponCreateUserName = couponCreateUserName;
     }
 
+    public void addMember(MemberEntity member){
+        this.member = member;
+    }
+
 }
