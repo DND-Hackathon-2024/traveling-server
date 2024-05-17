@@ -8,6 +8,8 @@ import com.plass.traveling.global.common.BaseResponse;
 public interface CouponService {
     BaseResponse createCoupon(CouponRequest couponRequest, Long userId);
 
+    BaseResponse getCouponInfo(Long couponId);
+
 
     default CouponEntity couponReqToEntity(CouponRequest couponRequest, Long userId, String code) {
         return CouponEntity.builder()

@@ -37,4 +37,15 @@ public class CouponServiceImpl implements CouponService{
                 couponEntityToResponse(couponRepository.save(couponEntity))
         );
     }
+
+    @Override
+    public BaseResponse getCouponInfo(Long couponId) {
+
+        return new BaseResponse(
+                HttpStatus.OK,
+                "쿠폰 조회 성공",
+                couponEntityToResponse(couponRepository.findById(couponId).get())
+        );
+
+    }
 }

@@ -5,10 +5,7 @@ import com.plass.traveling.domain.coupon.service.CouponService;
 import com.plass.traveling.global.common.BaseResponse;
 import com.plass.traveling.global.common.annotation.GetAuthenticatedId;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/coupon")
@@ -23,6 +20,13 @@ public class CouponController {
             @GetAuthenticatedId Long userId
     ) {
        return couponService.createCoupon(couponRequest, userId);
+    }
+
+    @GetMapping("/{couponId}")
+    public BaseResponse getCoupon(
+            @PathVariable Long couponId
+    ) {
+        return couponService.getCouponInfo(couponId);
     }
 
 }
