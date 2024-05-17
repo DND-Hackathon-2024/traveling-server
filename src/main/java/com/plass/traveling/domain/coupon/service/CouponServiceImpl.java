@@ -48,4 +48,17 @@ public class CouponServiceImpl implements CouponService{
         );
 
     }
+
+    @Override
+    public BaseResponse getCouponByLocation(String location, Long userId) {
+        return new BaseResponse(
+                HttpStatus.OK,
+                "지역위치 기반으로 쿠폰조회 성공",
+                couponRepository.findByCouponLocation(location).stream().map(
+                        this::couponEntityToResponse
+                )
+        );
+    }
+
+
 }

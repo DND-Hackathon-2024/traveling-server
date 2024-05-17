@@ -19,7 +19,7 @@ public class CouponController {
             @RequestBody CouponRequest couponRequest,
             @GetAuthenticatedId Long userId
     ) {
-       return couponService.createCoupon(couponRequest, userId);
+        return couponService.createCoupon(couponRequest, userId);
     }
 
     @GetMapping("/{couponId}")
@@ -27,6 +27,14 @@ public class CouponController {
             @PathVariable Long couponId
     ) {
         return couponService.getCouponInfo(couponId);
+    }
+
+    @GetMapping("/{location}")
+    public BaseResponse getCouponByLocation(
+            @PathVariable String location,
+            @GetAuthenticatedId Long userId
+    ) {
+        return couponService.getCouponByLocation(location, userId);
     }
 
 }

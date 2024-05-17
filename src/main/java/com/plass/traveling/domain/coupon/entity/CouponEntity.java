@@ -20,14 +20,20 @@ public class CouponEntity {
 
     private String couponName;
 
+    private String couponDescription;
+
+    private String couponLocation;
+
     private String couponDiscount;
 
     private String couponCreateUserName;
 
     @Builder
-    public CouponEntity(String code, String couponName, String couponDiscount, String couponCreateUserName) {
+    public CouponEntity(String code, String couponName, String couponDescription, String couponLocation, String couponDiscount, String couponCreateUserName) {
         this.code = code;
         this.couponName = couponName;
+        this.couponDescription = couponDescription;
+        this.couponLocation = couponLocation;
         this.couponDiscount = couponDiscount;
         this.couponCreateUserName = couponCreateUserName;
     }

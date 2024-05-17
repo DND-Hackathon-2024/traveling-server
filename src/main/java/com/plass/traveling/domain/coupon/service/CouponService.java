@@ -10,11 +10,17 @@ public interface CouponService {
 
     BaseResponse getCouponInfo(Long couponId);
 
+    BaseResponse getCouponByLocation(String location, Long userId);
+
 
     default CouponEntity couponReqToEntity(CouponRequest couponRequest, Long userId, String code) {
         return CouponEntity.builder()
+                .code(code)
                 .couponName(couponRequest.couponName())
+                .couponDescription(couponRequest.description())
+                .couponLocation(couponRequest.location())
                 .couponDiscount(couponRequest.couponDiscount())
+                .couponCreateUserName(userId.toString())
                 .build();
     }
 
@@ -23,6 +29,8 @@ public interface CouponService {
                 .couponId(couponEntity.getId())
                 .code(couponEntity.getCode())
                 .couponName(couponEntity.getCouponName())
+                .description(couponEntity.getCouponDescription())
+                .location(couponEntity.getCouponLocation())
                 .couponDiscount(couponEntity.getCouponDiscount())
                 .couponCreateUserName(couponEntity.getCouponCreateUserName())
                 .build();
