@@ -4,6 +4,8 @@ import com.plass.traveling.domain.coupon.dto.req.CouponRequest;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import com.plass.traveling.domain.coupon.repository.CouponRepository;
 import com.plass.traveling.global.common.BaseResponse;
+import com.plass.traveling.global.exception.CustomException;
+import com.plass.traveling.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -44,9 +46,8 @@ public class CouponServiceImpl implements CouponService{
         return new BaseResponse(
                 HttpStatus.OK,
                 "쿠폰 조회 성공",
-                couponEntityToResponse(couponRepository.findById(couponId).get())
+                couponEntityToResponse(couponRepository.findById(couponId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND)))
         );
-
     }
 
     @Override
