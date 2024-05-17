@@ -41,12 +41,15 @@ public class PlaceServiceImpl {
 
         else {
             String url = S3Uploader.upload(multipartFile, "device");
-
-            Optional<User> user = userRepository.findById(Long.valueOf(authentication.getName()));
-
-            deviceRepository.save(dtoToEntity(deviceCreateRequest, user.get().getId(), user.get().getDeviceName(), user.get().));
-
-            return new BaseResponse(HttpStatus.OK, "등록 성공");
         }
+    }
+
+    @Override
+    public BaseResponse findAll() {
+        return new BaseResponse(
+                HttpStatus.OK,
+                "불러오기 성공",
+                placeRepository.findAll()
+        );
     }
 }
