@@ -3,6 +3,8 @@ package com.plass.traveling.domain.coupon.service;
 import com.plass.traveling.domain.coupon.dto.req.CouponRequest;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import com.plass.traveling.domain.coupon.repository.CouponRepository;
+import com.plass.traveling.domain.member.entity.MemberEntity;
+import com.plass.traveling.domain.member.repository.MemberRepository;
 import com.plass.traveling.global.common.BaseResponse;
 import com.plass.traveling.global.exception.CustomException;
 import com.plass.traveling.global.exception.ErrorCode;
@@ -11,12 +13,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class CouponServiceImpl implements CouponService{
 
     private final CouponRepository couponRepository;
+    private final MemberRepository memberRepository;
 
     private String createCode(){
         Random rnd = new Random();
@@ -52,10 +56,19 @@ public class CouponServiceImpl implements CouponService{
 
     @Override
     public BaseResponse getCouponByLocation(String location, Long userId) {
+
+        MemberEntity member = memberRepository.findById(userId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND));
+
+        List<CouponEntity> couponEntities = member.getCoupons()
+                .stream()
+                .filter(coupon -> coupon.getCouponLocation().equals(location))
+                .toList();
+
+
         return new BaseResponse(
                 HttpStatus.OK,
                 "지역위치 기반으로 쿠폰조회 성공",
-                couponRepository.findByCouponLocation(location).stream().map(
+                couponEntities.stream().map(
                         this::couponEntityToResponse
                 )
         );
