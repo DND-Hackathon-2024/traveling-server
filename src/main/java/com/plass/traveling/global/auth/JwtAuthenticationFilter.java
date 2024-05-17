@@ -37,17 +37,23 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (provider.isExpired(token)) {
             setErrorResponse(response, ErrorCode.JWT_ALREADY_EXPIRED);
+            return;
         }
 
-        UserDetails detail = service.loadUserByUsername(provider.getIdx(token));
+        try {
+            UserDetails detail = service.loadUserByUsername(provider.getIdx(token));
 
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                detail,
-                null,
-                detail.getAuthorities()
-        );
+            Authentication auth = new UsernamePasswordAuthenticationToken(
+                    detail,
+                    null,
+                    detail.getAuthorities()
+            );
 
-        SecurityContextHolder.getContext().setAuthentication(auth);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        } catch (NullPointerException e) {
+            setErrorResponse(response, ErrorCode.NULL_POINTER_EXCEPTION);
+            return;
+        }
 
         doFilter(request, response, filterChain);
     }
