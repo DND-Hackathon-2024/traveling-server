@@ -1,9 +1,7 @@
 package com.plass.traveling.domain.coupon.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.plass.traveling.domain.member.entity.MemberEntity;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +25,10 @@ public class CouponEntity {
     private String couponDiscount;
 
     private String couponCreateUserName;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private MemberEntity member;
 
     @Builder
     public CouponEntity(String code, String couponName, String couponDescription, String couponLocation, String couponDiscount, String couponCreateUserName) {
