@@ -1,6 +1,8 @@
 package com.plass.traveling.global.auth;
 
 import com.plass.traveling.domain.member.repository.MemberRepository;
+import com.plass.traveling.global.exception.CustomException;
+import com.plass.traveling.global.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +18,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String idx) throws UsernameNotFoundException {
         return new JwtUserDetails(
-                repository.findById(Long.valueOf(idx)).orElseThrow(IllegalAccessError::new)
+                repository.findById(Long.valueOf(idx)).orElseThrow(() -> new CustomException(
+                        ErrorCode.MEMBER_NOT_EXIST
+                ))
         );
     }
 
