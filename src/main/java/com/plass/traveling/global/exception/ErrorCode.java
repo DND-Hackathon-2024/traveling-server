@@ -14,7 +14,9 @@ public enum ErrorCode {
     MEMBER_NOT_EXIST(HttpStatus.BAD_REQUEST, "멤버가 존재하지 않습니다"),
     MEMBER_NOT_MATCH(HttpStatus.BAD_REQUEST, "멤버 정보가 일치하지 않습니다"),
 
-    NOT_FOUND(HttpStatus.NOT_FOUND, "아무것도 찾지 못했습니다...");
+    NOT_FOUND(HttpStatus.NOT_FOUND, "아무것도 찾지 못했습니다..."),
+
+    NULL_POINTER_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, "알 수 없는 문제가 발생했습니다");
 
     private final HttpStatus httpStatus;
     private final String message;
