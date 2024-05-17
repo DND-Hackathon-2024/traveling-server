@@ -12,6 +12,8 @@ public interface CouponService {
 
     BaseResponse getCouponByLocation(String location, Long userId);
 
+    BaseResponse addCoupon(Long userId, Long couponId);
+
 
     default CouponEntity couponReqToEntity(CouponRequest couponRequest, Long userId, String code) {
         return CouponEntity.builder()
