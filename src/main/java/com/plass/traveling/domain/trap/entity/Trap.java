@@ -1,4 +1,4 @@
-package com.plass.traveling.domain.place.entity;
+package com.plass.traveling.domain.trap.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,8 +10,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "place")
-public class Place {
+@Table(name = "trap")
+public class Trap {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,12 +47,12 @@ public class Place {
     private String imgUrl;
 
     @Builder
-    public Place(Long id,
-                 String placeName,
-                 String placeDesc,
-                 String address,
-                 Long couponId,
-                 String imgUrl) {
+    public Trap(Long id,
+                String placeName,
+                String placeDesc,
+                String address,
+                Long couponId,
+                String imgUrl) {
         this.id = id;
         this.placeName = placeName;
         this.placeDesc = placeDesc;
