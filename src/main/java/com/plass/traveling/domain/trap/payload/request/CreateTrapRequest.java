@@ -1,6 +1,6 @@
-package com.plass.traveling.domain.place.payload.request;
+package com.plass.traveling.domain.trap.payload.request;
 
-public record CreatePlaceRequest(
+public record CreateTrapRequest(
         Long id,
         String placeName,
         String placeDesc,
