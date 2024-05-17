@@ -16,7 +16,7 @@ public class PlaceController {
     private final PlaceService placeService;
 
     @GetMapping("/list")
-    public BaseResponse allDevices(){
+    public BaseResponse allPlaces(){
         return placeService.findAll();
     }
 }
