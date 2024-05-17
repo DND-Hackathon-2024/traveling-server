@@ -28,6 +28,10 @@ public class PlaceServiceImpl implements PlaceService{
 
     @Override
     public BaseResponse findAll() {
-        return null;
+        return new BaseResponse(
+                HttpStatus.OK,
+                "불러오기 성공",
+                placeRepository.findAll()
+        );
     }
 }
