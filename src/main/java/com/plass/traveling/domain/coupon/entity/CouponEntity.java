@@ -1,5 +1,6 @@
 package com.plass.traveling.domain.coupon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.plass.traveling.domain.member.entity.MemberEntity;
 import com.plass.traveling.domain.trap.entity.Trap;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class CouponEntity {
 
     private String couponCreateUserName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "couponId")
     private List<Trap> trap;
 
