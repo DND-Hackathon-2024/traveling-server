@@ -5,10 +5,7 @@ import com.plass.traveling.domain.member.dto.req.MemberRegisterRequest;
 import com.plass.traveling.domain.member.service.MemberService;
 import com.plass.traveling.global.common.BaseResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/member")
