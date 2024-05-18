@@ -1,5 +1,6 @@
 package com.plass.traveling.domain.trap.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -42,6 +43,7 @@ public class Trap {
     private String imgUrl;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "coupon_id")
     private CouponEntity couponId;
 
