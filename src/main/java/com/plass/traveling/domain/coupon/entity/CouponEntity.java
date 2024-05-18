@@ -1,10 +1,14 @@
 package com.plass.traveling.domain.coupon.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.plass.traveling.domain.member.entity.MemberEntity;
+import com.plass.traveling.domain.trap.entity.Trap;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -26,7 +30,9 @@ public class CouponEntity {
 
     private String couponCreateUserName;
 
-    private Long trapId;
+    @JsonIgnore
+    @OneToMany(mappedBy = "couponId")
+    private List<Trap> trap;
 
     @ManyToOne
     @JoinColumn(name = "member_id")

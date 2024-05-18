@@ -1,5 +1,6 @@
 package com.plass.traveling.domain.trap.entity;
 
+import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -35,23 +36,21 @@ public class Trap {
     private String address;
 
     /*
-        쿠폰 id
-    */
-    @Column(nullable = false)
-    private Long couponId;
-
-    /*
         장소 이미지
     */
     @Column(nullable = false)
     private String imgUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "coupon_id")
+    private CouponEntity couponId;
 
     @Builder
     public Trap(Long id,
                 String placeName,
                 String placeDesc,
                 String address,
-                Long couponId,
+                CouponEntity couponId,
                 String imgUrl) {
         this.id = id;
         this.placeName = placeName;
