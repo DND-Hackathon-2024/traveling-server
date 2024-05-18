@@ -7,7 +7,7 @@ import java.util.List;
 
 @Builder
 public record CouponResponse(
-        Long couponId,
+        Long id,
         String code,
         String couponName,
         String description,
