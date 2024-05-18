@@ -3,7 +3,10 @@ package com.plass.traveling.domain.coupon.service;
 import com.plass.traveling.domain.coupon.dto.req.CouponRequest;
 import com.plass.traveling.domain.coupon.dto.res.CouponResponse;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
+import com.plass.traveling.domain.trap.entity.Trap;
 import com.plass.traveling.global.common.BaseResponse;
+
+import java.util.List;
 
 public interface CouponService {
     BaseResponse createCoupon(CouponRequest couponRequest, Long userId);
@@ -37,7 +40,7 @@ public interface CouponService {
                 .location(couponEntity.getCouponLocation())
                 .couponDiscount(couponEntity.getCouponDiscount())
                 .couponCreateUserName(couponEntity.getCouponCreateUserName())
-                .trapId(couponEntity.getTrapId())
+                .trap(couponEntity.getTrap())
                 .build();
     }
 }
