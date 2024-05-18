@@ -33,7 +33,7 @@ public interface CouponService {
 
     default CouponResponse couponEntityToResponse(CouponEntity couponEntity) {
         return CouponResponse.builder()
-                .couponId(couponEntity.getId())
+                .id(couponEntity.getId())
                 .code(couponEntity.getCode())
                 .couponName(couponEntity.getCouponName())
                 .description(couponEntity.getCouponDescription())

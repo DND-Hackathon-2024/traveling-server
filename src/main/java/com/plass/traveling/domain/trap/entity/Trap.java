@@ -43,7 +43,6 @@ public class Trap {
     private String imgUrl;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "coupon_id")
     private CouponEntity couponId;
 
