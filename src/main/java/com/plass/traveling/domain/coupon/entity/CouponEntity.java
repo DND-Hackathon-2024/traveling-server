@@ -39,13 +39,14 @@ public class CouponEntity {
     private MemberEntity member;
 
     @Builder
-    public CouponEntity(String code, String couponName, String couponDescription, String couponLocation, String couponDiscount, String couponCreateUserName) {
+    public CouponEntity(String code, String couponName, String couponDescription, String couponLocation, String couponDiscount, String couponCreateUserName, Long trapId) {
         this.code = code;
         this.couponName = couponName;
         this.couponDescription = couponDescription;
         this.couponLocation = couponLocation;
         this.couponDiscount = couponDiscount;
         this.couponCreateUserName = couponCreateUserName;
+        this.trapId = trapId;
     }
 
     public void addMember(MemberEntity member){

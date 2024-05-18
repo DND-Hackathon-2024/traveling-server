@@ -11,6 +11,8 @@ public interface TrapService {
     BaseResponse trapCreate(CreateTrapRequest createTrapRequest);
 
     BaseResponse trapDelete(Long placeId);
+    
+    BaseResponse getTrap(Long trapId);
 
     default Trap dtoToEntity(CreateTrapRequest createTrapRequest, CouponEntity couponEntity){
         return Trap.builder()
