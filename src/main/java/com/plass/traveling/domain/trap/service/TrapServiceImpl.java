@@ -37,6 +37,12 @@ public class TrapServiceImpl implements TrapService{
     }
 
     @Override
+    public BaseResponse getTrap(Long trapId) {
+
+        return new BaseResponse(HttpStatus.OK, "불러오기성공", trapRepository.findById(trapId).orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND)));
+    }
+
+    @Override
     public BaseResponse findAll() {
         return new BaseResponse(
                 HttpStatus.OK,
