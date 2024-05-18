@@ -1,5 +1,6 @@
 package com.plass.traveling.domain.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.plass.traveling.domain.coupon.entity.CouponEntity;
 import com.plass.traveling.domain.member.enums.MemberRoles;
 import jakarta.persistence.*;
@@ -25,6 +26,7 @@ public class MemberEntity {
     @Enumerated(EnumType.STRING)
     private MemberRoles role;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "member")
     private List<CouponEntity> coupons;
 
